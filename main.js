@@ -19,9 +19,52 @@ function controlEventos(note){
   note.addEventListener('mousedown',keyPlay);
   note.addEventListener('mouseup',keyReturn);
 };
-// Write a named function with event handler properties
 
+// Define un objeto que mapea los id de las teclas a las rutas de los archivos de sonido
+const soundFiles = {
+  'c-key': './notas/Do3.mp3',
+  'c-sharp-key': './notas/Do_sostenido3.mp3',
+  'd-key':'./notas/Re3.mp3',
+  'd-sharp-key': './notas/Re_sostenido3.mp3',
+  'e-key':'./notas/Mi3.mp3',
+  'f-key': './notas/Fa3.mp3',
+  'f-sharp-key': './notas/Fa_sostenido3.mp3',
+  'g-key': './notas/Sol3.mp3',
+  'g-sharp-key': './notas/Sol_sostenido3.mp3',
+  'a-key': './notas/La3.mp3',
+  'a-sharp-key': './notas/La_sostenido3.mp3',
+  'b-key': './notas/Si3.mp3',
+  'high-c-key': './notas/Do4.mp3',
+  'high-c-sharp-key': './notas/Do_sostenido4.mp3',
+  'high-d-key': './notas/Re4.mp3',
+  'high-d-sharp-key': './notas/Re_sostenido4.mp3',
+  'high-e-key': './notas/Mi4.mp3',
+  'high-f-key': './notas/Fa4.mp3',
+  'high-f-sharp-key': './notas/Fa_sostenido4.mp3',
+  'high-g-key': './notas/Sol4.mp3',
+  'high-g-sharp-key': './notas/Sol_sostenido4.mp3',
+  'high-a-key': './notas/La4.mp3',
+  'high-a-sharp-key': './notas/La_sostenido4.mp3',
+  'high-b-key': './notas/Si4.mp3',
+  'high-high-c-key': './notas/Do5.mp3'
+};
 
+// Function to play the sound of the piano key
+function playSound(id) {
+  const soundFile = soundFiles[id];
+  if (soundFile) {
+    const audio = new Audio(soundFile);
+    audio.play();
+  }
+}
+
+// Loop through each note and add event listeners for mouse events
+notes.forEach(function(note) {
+  controlEventos(note);
+  note.addEventListener('click', function() {
+    playSound(note.id);
+  });
+});
 
 // Write a loop that runs the array elements through the function
 notes.forEach(controlEventos);
@@ -86,7 +129,7 @@ nextThree.onclick = function(){
 startOver.onclick = function() {
   nextOne.hidden = false;
   startOver.hidden = true;
-   document.getElementById('word-one').innerHTML = 'HAP-';
+  document.getElementById('word-one').innerHTML = 'HAP-';
   document.getElementById('letter-note-one').innerHTML = 'G';
   document.getElementById('word-two').innerHTML = 'PY';
   document.getElementById('letter-note-two').innerHTML = 'G';
@@ -99,3 +142,5 @@ startOver.onclick = function() {
   document.getElementById('word-six').innerHTML = 'YOU!';
   document.getElementById('letter-note-six').innerHTML = 'B';
 }
+
+
