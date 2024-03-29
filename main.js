@@ -22,7 +22,7 @@ function controlEventos(note){
 
 // Define un objeto que mapea los id de las teclas a las rutas de los archivos de sonido
 const soundFiles = {
-  'c-key': '/notas/Do3.mp3',
+  'c-key': './notas/Do3.mp3',
   'c-sharp-key': './notas/Do_sostenido3.mp3',
   'd-key':'./notas/Re3.mp3',
   'd-sharp-key': './notas/Re_sostenido3.mp3',
